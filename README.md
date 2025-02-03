@@ -14,7 +14,7 @@ become one’.
 Here links to html rendered files:
 
 1.  [gallery_config_to_dataframe.html](https://evamaerey.github.io/ggplot2-extension-ecosystem/gallery_config_to_dataframe.html)
-    **[source](https://github.com/evamaerey/ggplot2-extension-ecosystem/blob/master/gallery_config_to_dataframe.Rmd)**
+    **[source](https://github.com/evamaerey/ggplot2-extension-ecosystem/blob/master/gallery_config_to_dataframe.qmd)**
 
 And to tabular data…
 

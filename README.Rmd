@@ -36,7 +36,7 @@ webpages %>%
          "]",
          "(https://evamaerey.github.io/ggplot2-extension-ecosystem/", ., 
          ") **[source](https://github.com/evamaerey/ggplot2-extension-ecosystem/blob/master/",
-         file_name_wo_extension,".Rmd",
+         file_name_wo_extension,".qmd",
          ")**\n") %>% 
   cat()     
 ```
