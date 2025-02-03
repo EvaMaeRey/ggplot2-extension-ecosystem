@@ -1,0 +1,66 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# ggplot2-extension-ecosystem
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The ggplot2-extension-ecosystem will help us work on the 'Who are the ggplot2 extenders? and how to become one'.
+
+Here links to html rendered files:
+
+```{r, results = 'asis', echo = F}
+library(magrittr)
+webpages <- fs::dir_ls(type = "file", 
+                       recurse = T, 
+                       glob = "*.html|*.pdf") %>% 
+  rev()
+
+file_name_wo_extension <- webpages %>% 
+  stringr::str_remove(".html|.pdf")
+ 
+webpages %>%    
+  paste0("1. [",
+         . ,
+         "]",
+         "(https://evamaerey.github.io/mytidytuesday/", ., 
+         ") **[source](https://github.com/evamaerey/mytidytuesday/blob/master/",
+         file_name_wo_extension,".Rmd",
+         ")**\n") %>% 
+  cat()     
+```
+
+
+And to tabular data...
+
+```{r, results = 'asis', echo = F}
+library(magrittr)
+webpages <- fs::dir_ls(type = "file", 
+                       recurse = T, 
+                       glob = "*.csv") %>% 
+  rev()
+
+file_name_wo_extension <- webpages %>% 
+  stringr::str_remove(".csv")
+ 
+webpages %>%    
+  paste0("1. [",
+         . ,
+         "]",
+         "(https://evamaerey.github.io/mytidytuesday/", ., ")") %>% 
+  cat()     
+
+
+
+```
