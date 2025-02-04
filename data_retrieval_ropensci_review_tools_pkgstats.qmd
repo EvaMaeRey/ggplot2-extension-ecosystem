@@ -1,0 +1,9 @@
+---
+title: "ropensci-review-tools/pkgstats"
+format: html
+editor: visual
+---
+
+ROpenSci review tools is yet another approach. <https://github.com/ropensci-review-tools/pkgstats>
+
+There was [used for a tidytuesday in 2023](https://github.com/rfordatascience/tidytuesday/blob/main/data/2023/2023-12-26/readme.md) with a csv already available, but we'll use the package to get our own, up-to-date data...

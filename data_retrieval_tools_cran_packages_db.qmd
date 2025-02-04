@@ -1,0 +1,31 @@
+---
+title: "tools::CRAN_packages_db"
+format: html
+editor: visual
+---
+
+## Another place to explore is the
+
+June Choe submitted basis in discusssions: https://github.com/teunbrand/ggplot-extension-club/discussions/62#discussioncomment-11310830
+
+```{r}
+library(tidyverse)
+```
+
+```{r, eval = F}
+
+pkgs <- as_tibble(tools::CRAN_package_db())
+gg_pkgs <- pkgs %>% 
+  filter(
+    str_detect(Package, "^gg|^GG|gg$|GG$"),
+    if_any(-Package, ~ str_detect(.x, "ggplot2")) # among all packages except ggplot2
+  )
+
+gg_pkgs |>
+  write_csv("tools_cran_package_db_gg_packages.csv")
+```
+
+```{r}
+read_csv("tools_cran_package_db_gg_packages.csv") |> head()
+
+```

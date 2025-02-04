@@ -1,0 +1,71 @@
+---
+title: "extension gallery config information"
+format: html
+editor: visual
+---
+
+## 
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(tidyverse.quiet = TRUE)
+```
+
+```{r}
+library(tidyverse)
+```
+
+## 
+
+We want to look at the packages submitted to the ggplot2 extension gallery at <https://exts.ggplot2.tidyverse.org/gallery/.>
+
+To add an ggplot2 extension, there is this instruction
+
+> Add an entry for your extension in the \_config.yml file of this repository with the meta data for your extension (copy another entry and modify). Please see below for guidance on the meta data.
+
+```{r, eval = F}
+ read_lines("https://raw.githubusercontent.com/ggplot2-exts/gallery/refs/heads/gh-pages/_config.yml") |> 
+  write_lines("ext_config_yml.txt")
+```
+
+Here is one of the entries.
+
+```{r}
+read_lines("ext_config_yml.txt")[8:23]
+```
+
+Maybe we can easily collect all this info if we remove the returns before indentations... (the description fields)
+
+```{r}
+read_lines("ext_config_yml.txt") |>
+  paste(collapse = "\n") |>
+  str_replace_all("\\>\n    ", "") |>
+  str_replace_all("\n    ", "") |>
+  str_split("\n") |>
+  _[[1]] ->
+config_initial_parse
+
+config_initial_parse |> head(20)
+
+```
+
+```{r}
+config_initial_parse |>
+  tibble(config_text = _) |>
+  separate(config_text, sep = ": ", into = c("item", "content")) %>% 
+  filter(!is.na(content)) %>% 
+  mutate(name = ifelse(item == "- name", content, NA)) %>% 
+  select(name, everything()) %>% 
+  mutate(item = str_trim(item)) %>% 
+  fill(name) %>% 
+  filter(!is.na(name)) %>% 
+  filter(item != "- name") %>% 
+  pivot_wider(names_from = item, values_from = content) ->
+config_dataframe
+
+head(config_dataframe)
+```
+
+```{r}
+write.csv(config_dataframe, "gallery_config.csv")
+```

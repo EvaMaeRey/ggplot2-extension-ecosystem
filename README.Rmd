@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The ggplot2-extension-ecosystem [githubrepo](https://github.com/EvaMaeRey/ggplot2-extension-ecosystem) will help us work on the 'Who are the ggplot2 extenders? and how to become one'.
+The ggplot2-extension-ecosystem [github repo](https://github.com/EvaMaeRey/ggplot2-extension-ecosystem) will help us work on the 'Who are the ggplot2 extenders? and how to become one'.
  
 Here links to html rendered files:
 
@@ -51,6 +51,8 @@ webpages <- fs::dir_ls(type = "file",
                        glob = "*.csv") %>% 
   rev()
 
+
+
 file_name_wo_extension <- webpages %>% 
   stringr::str_remove(".csv")
  
@@ -58,7 +60,7 @@ webpages %>%
   paste0("1. [",
          . ,
          "]",
-         "(https://github.com/EvaMaeRey/ggplot2-extension-ecosystem/blob/main/", ., ")") %>% 
+         "(https://github.com/EvaMaeRey/ggplot2-extension-ecosystem/blob/main/", ., ")\n") %>% 
   cat()     
 
 
