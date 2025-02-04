@@ -1,0 +1,159 @@
+---
+title: Who are the ggplot2 extenders?
+format: closeread-html
+---
+
+
+```{r, include = F}
+library(tidyverse)
+knitr::opts_chunk$set(echo = T, message = F, warning = F)
+```
+
+
+
+```{r}
+user_repo_fun <- read_csv("https://raw.githubusercontent.com/EvaMaeRey/mytidytuesday/refs/heads/main/2024-11-19-gg-prefixes/exported_funs_exts_ggplot2_tidyverse_org.csv") %>% 
+
+  
+  mutate(prefix_short = fun_exported |> str_extract(".*?_")) %>% 
+  mutate(prefix_long = fun_exported |> str_extract("scale_.*?_|.*?_"))
+
+# user_repo_fun$user |> unique() %>% paste0("@", ., " ") |> cat()
+
+sample_n(user_repo_fun, 20) |>
+  knitr::kable()
+```
+
+
+::: {.callout-caution collapse="true"}
+## See experimental 'ggplyr' function definitions used in the data exploration
+
+
+
+
+```{r}
+data_filter <- function(.keep, .by) {
+  structure(list(keep_specification = rlang::enquo(.keep), 
+                 by_specification = rlang::enquo(.by)), 
+            class = "filterobs")
+}
+
+ggplot_add.filterobs <- function(object, plot, object_name) {
+  
+  new_data <- dplyr::filter(plot$data, 
+                            !!object$keep_specification, 
+                            .by = !!object$by_specification)
+  plot$data <- new_data
+  plot
+
+}
+
+data_nest <- function(.by) {
+  structure(list(by_specification = rlang::enquo(.by)),
+            class = "data_nestvar")
+  
+}
+
+ggplot_add.data_nestvar <- function(object, plot, object_name) {
+
+  
+  new_data <- tidyr::nest(plot$data, 
+                          .by = !! object$by_specification)
+    
+  plot$data <- new_data
+  plot
+
+}
+
+
+data_unnest <- function(cols) {
+  structure(list(),
+            class = "data_unnestvar")
+  
+}
+
+ggplot_add.data_unnestvar <- function(object, plot, object_name) {
+
+  
+  new_data <- tidyr::unnest(plot$data, cols = "data")
+    
+  plot$data <- new_data
+  
+  plot
+
+}
+
+```
+
+:::
+
+
+
+
+::: {.callout-caution collapse="true"}
+## See experimental flipbookrXcloseread functionality used to reveal plot build line by line
+
+
+```{r, echo = T, results='hide'}
+cr_last_plot_construction <- ':::{focus-on="cr-.PLOTXXX"}\n.COMMENT, using `.CODE`\n:::\n\n:::{#cr-.PLOTXXX}\n```{r .PLOTXXX}\n.LEADING\n  .CODE\n```\n:::\n'  
+
+cr_last_plot_construction |> cat()
+```
+
+
+
+```{r, include = T}
+knitr::knit_code$get("walkthrough") |>
+  tibble(code_raw = _) |>
+  mutate(comment = str_extract(code_raw, "#.+$")) |>
+  mutate(comment = str_remove(comment, "#")) |>
+  mutate(code = str_remove(code_raw, "\\+ #.+$|#.+$")) |>
+  mutate(index = row_number()) |>
+  mutate(plot_name = paste("walkthrough", sep = "-", index)) |>
+  mutate(to_cr = cr_last_plot_construction) |>
+  mutate(to_cr = str_replace_all(to_cr, ".PLOTXXX", plot_name)) |>
+  mutate(to_cr = str_replace(to_cr, ".COMMENT", comment)) |>
+  mutate(to_cr = str_replace_all(to_cr, ".CODE", code)) |>
+  mutate(to_cr = str_replace(to_cr, ".LEADING", ifelse(index == 1, "", "last_plot() +"))) |>
+  pull(to_cr) -> 
+to_closeread
+
+to_closeread
+```
+
+:::
+
+
+:::{.cr-section}
+
+`r paste(knitr::knit(text = to_closeread, quiet = F), collapse = "\n\n")`
+
+:::
+
+
+Here is the complete 'conversation' with the dataset!
+
+```{r walkthrough, echo = T}
+ggplot(data = user_repo_fun) + # the data frame to be plotted is all the exported functions from the 
+  aes(id = "All exported functions") + # let's look at a count of all the exported functions first
+  ggcirclepack::geom_circlepack() + # Using circlepacking, we automatically have circles size representing the number of observation, i.e. exported functions
+  ggcirclepack::geom_circlepack_text() + # Of course this is hard to interpret without some kind of label.  We use geom_circplepack_text to do this for us
+  coord_equal() + # and lets square up the circles
+  ggchalkboard:::theme_glassboard() + # we'll add a theme
+  theme(axis.line = element_blank(), axis.text = element_blank(), axis.ticks = element_blank()) + # And remove axes... 
+  aes(id = repo) + # First we ask what packages - github repository names - are present
+  aes(id = user) + # Then let's look at who is writing these exported functions
+  data_nest(.by = user) + # an extender's an extender no matter how small
+  scale_size(range = 1.75) + #shrink sizes
+  data_unnest() + data_nest(.by = c(user, repo)) + # extender by number of repos
+  scale_size() + # back to default size scales
+  data_unnest() + # back to record per extender (user)
+  aes(id = prefix_short) + # And we can look at what types of functions are exported, by looking at prefixes
+  aes(id = prefix_long) + # Disaggregating a little, to longer prefixes like scale_color, we get a more granular look at exported function types
+  data_filter(n() > 60 & !is.na(prefix_long), .by = prefix_long) + # and we filter more popular prefixes
+  facet_wrap(~prefix_short) + # and break up our plot space by these prefixes
+  data_filter(!(prefix_short %in% c("gf_","add_"))) + #gf and add_ aren't really in-grammar prefixes
+  aes(id = user) + # let's look at top prefixes by user
+  data_filter(n() >= 10, .by = c(user, prefix_short)) + # and look at the prolific authors in each of these areas
+  data_nest(c(user, prefix_short)) + scale_size(range = 1.7) # and show them equally
+```

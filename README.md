@@ -18,4 +18,4 @@ Here links to html rendered files:
 
 And to tabular data…
 
-1.  [gallery_config.csv](https://evamaerey.github.io/ggplot2-extension-ecosystem/gallery_config.csv)
+1.  [gallery_config.csv](https://github.com/EvaMaeRey/ggplot2-extension-ecosystem/blob/main/gallery_config.csv)

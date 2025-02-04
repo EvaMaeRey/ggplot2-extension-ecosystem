@@ -58,7 +58,7 @@ webpages %>%
   paste0("1. [",
          . ,
          "]",
-         "(https://evamaerey.github.io/ggplot2-extension-ecosystem/", ., ")") %>% 
+         "(https://github.com/EvaMaeRey/ggplot2-extension-ecosystem/blob/main/", ., ")") %>% 
   cat()     
 
 
