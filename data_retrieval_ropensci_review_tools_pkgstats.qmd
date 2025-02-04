@@ -7,3 +7,93 @@ editor: visual
 ROpenSci review tools is yet another approach. <https://github.com/ropensci-review-tools/pkgstats>
 
 There was [used for a tidytuesday in 2023](https://github.com/rfordatascience/tidytuesday/blob/main/data/2023/2023-12-26/readme.md) with a csv already available, but we'll use the package to get our own, up-to-date data...
+
+
+::: {.callout-caution collapse="true"}
+# Tidytuesday cleaning code if of interest
+
+```{r, eval = F}
+
+
+library(tidyverse)
+library(here)
+library(fs)
+
+working_dir <- here::here("data", "2023", "2023-12-26")
+
+cran_20221122_url <- "https://zenodo.org/records/7414296/files/pkgstats-CRAN-current.Rds?download=1"
+cran_20221122 <- readr::read_rds(cran_20221122_url) |>
+  dplyr::ungroup() |>
+  dplyr::mutate(
+    dplyr::across(
+      c(translations, depends:linking_to, languages, external_calls),
+      \(x) {
+        dplyr::na_if(x, "NA") |> 
+          dplyr::na_if("")
+      }
+    )
+  )
+dplyr::glimpse(cran_20221122)
+
+
+calls_20221122 <- cran_20221122 |>
+  dplyr::select(package_from = package, external_calls) |>
+  tidyr::separate_longer_delim(
+    external_calls,
+    ","
+  ) |>
+  # In at least one case, an extra "L:" prefix was picked up from a 1:10-style
+  # range.
+  dplyr::mutate(
+    external_calls = stringr::str_remove(external_calls, "^L:")
+  ) |> 
+  tidyr::separate_wider_delim(
+    external_calls,
+    ":",
+    names = c("package_to", "n_total", "n_unique")
+  )
+
+cran_20221122$external_calls <- NULL
+
+external_calls <- calls_20221122 |> 
+  dplyr::filter(package_from != package_to)
+internal_calls <- calls_20221122 |> 
+  dplyr::filter(package_from == package_to) |> 
+  dplyr::select(package = package_from, n_total, n_unique)
+
+readr::write_csv(
+  cran_20221122,
+  fs::path(working_dir, "cran_20221122.csv")
+)
+readr::write_csv(
+  external_calls,
+  fs::path(working_dir, "external_calls.csv")
+)
+readr::write_csv(
+  internal_calls,
+  fs::path(working_dir, "internal_calls.csv")
+)
+
+```
+
+:::
+
+Using posted tidytuesday data
+
+```{r, message = F, warning=F}
+library(tidyverse)
+cran_20230905 <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-09-19/cran_20230905.csv')
+package_authors <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-09-19/package_authors.csv')
+
+
+cran_20230905 %>% 
+  filter(Package %>% 
+           str_detect("^gg|^GG")) %>% 
+  filter(Imports %>% 
+           str_detect("ggplot2")|
+         Depends %>% str_detect("ggplot2")) %>% 
+  left_join(package_authors %>% 
+              mutate(authorsR = authorsR %>% 
+                       str_replace(" ", "\n")), by = "Package") %>% 
+  select(Package, authorsR, URL, everything())
+```
