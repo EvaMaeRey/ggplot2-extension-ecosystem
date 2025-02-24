@@ -35,7 +35,8 @@ library(magrittr)
 webpages <- fs::dir_ls(type = "file", 
                        recurse = T, 
                        glob = "*.html|*.pdf") %>% 
-  rev()
+  rev() %>% 
+  stringr::str_remove("docs/")
 
 file_name_wo_extension <- webpages %>% 
   stringr::str_remove(".html|.pdf")
