@@ -73,6 +73,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/intersection-observer-polyfill-1.0.0/intersection-observer.js"></script>
+<script src="site_libs/quarto-contrib/scrollama-3.2.0/scrollama.min.js"></script>
+<script src="site_libs/quarto-contrib/closeread-0.1.0/closeread.js"></script>
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -100,8 +103,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<meta cr-debug-mode="false">
+<meta cr-remove-header-space="false">
 
 
+<link rel="stylesheet" href="site_libs/quarto-contrib/quarto-project/qmd-lab/closeread/closeread.css">
 </head>
 
 <body class="nav-fixed">
@@ -122,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./ggprefixes_closereads.qmd"> 
+    <a class="nav-link active" href="./ggprefixes_closeread.html" aria-current="page"> 
 <span class="menu-text">First closeread</span></a>
   </li>  
 </ul>
@@ -139,14 +145,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -155,7 +159,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page">
 
     
   
@@ -470,11 +474,122 @@ See experimental flipbookrXcloseread functionality used to reveal plot build lin
 </div>
 </div>
 </div>
-<div class="cr-section">
-<div data-focus-on="cr-walkthrough-1">
+<div class="cr-section cr-column-screen sidebar-left">
+<div class="narrative-col">
+<div class="trigger new-trigger" data-focus-on="cr-walkthrough-1">
+<div class="narrative">
 <p>the data frame to be plotted is all the exported functions from the , using <code>ggplot(data = user_repo_fun)</code></p>
 </div>
-<div id="cr-walkthrough-1">
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-walkthrough-2">
+<div class="narrative">
+<p>let’s look at a count of all the exported functions first, using <code>aes(id = "All exported functions")</code></p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-walkthrough-3">
+<div class="narrative">
+<p>Using circlepacking, we automatically have circles size representing the number of observation, i.e.&nbsp;exported functions, using <code>ggcirclepack::geom_circlepack()</code></p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-walkthrough-4">
+<div class="narrative">
+<p>Of course this is hard to interpret without some kind of label. We use geom_circplepack_text to do this for us, using <code>ggcirclepack::geom_circlepack_text()</code></p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-walkthrough-5">
+<div class="narrative">
+<p>and lets square up the circles, using <code>coord_equal()</code></p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-walkthrough-6">
+<div class="narrative">
+<p>we’ll add a theme, using <code>ggchalkboard:::theme_glassboard()</code></p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-walkthrough-7">
+<div class="narrative">
+<p>And remove axes… , using <code>theme(axis.line = element_blank(), axis.text = element_blank(), axis.ticks = element_blank())</code></p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-walkthrough-8">
+<div class="narrative">
+<p>First we ask what packages - github repository names - are present, using <code>aes(id = repo)</code></p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-walkthrough-9">
+<div class="narrative">
+<p>Then let’s look at who is writing these exported functions, using <code>aes(id = user)</code></p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-walkthrough-10">
+<div class="narrative">
+<p>an extender’s an extender no matter how small, using <code>data_nest(.by = user)</code></p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-walkthrough-11">
+<div class="narrative">
+<p>shrink sizes, using <code>scale_size(range = 1.75)</code></p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-walkthrough-12">
+<div class="narrative">
+<p>extender by number of repos, using <code>data_unnest() + data_nest(.by = c(user, repo))</code></p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-walkthrough-13">
+<div class="narrative">
+<p>back to default size scales, using <code>scale_size()</code></p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-walkthrough-14">
+<div class="narrative">
+<p>back to record per extender (user), using <code>data_unnest()</code></p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-walkthrough-15">
+<div class="narrative">
+<p>And we can look at what types of functions are exported, by looking at prefixes, using <code>aes(id = prefix_short)</code></p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-walkthrough-16">
+<div class="narrative">
+<p>Disaggregating a little, to longer prefixes like scale_color, we get a more granular look at exported function types, using <code>aes(id = prefix_long)</code></p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-walkthrough-17">
+<div class="narrative">
+<p>and we filter more popular prefixes, using <code>data_filter(n() &gt; 60 &amp; !is.na(prefix_long), .by = prefix_long)</code></p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-walkthrough-18">
+<div class="narrative">
+<p>and break up our plot space by these prefixes, using <code>facet_wrap(~prefix_short)</code></p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-walkthrough-19">
+<div class="narrative">
+<p>gf and add_ aren’t really in-grammar prefixes, using <code>data_filter(!(prefix_short %in% c("gf_","add_")))</code></p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-walkthrough-20">
+<div class="narrative">
+<p>let’s look at top prefixes by user, using <code>aes(id = user)</code></p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-walkthrough-21">
+<div class="narrative">
+<p>and look at the prolific authors in each of these areas, using <code>data_filter(n() &gt;= 10, .by = c(user, prefix_short))</code></p>
+</div>
+</div>
+<div class="trigger new-trigger" data-focus-on="cr-walkthrough-22">
+<div class="narrative">
+<p>and show them equally, using <code>data_nest(c(user, prefix_short)) + scale_size(range = 1.7)</code></p>
+</div>
+</div>
+</div>
+<div class="sticky-col">
+<div class="sticky-col-stack">
+<div id="cr-walkthrough-1" class="sticky">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">data =</span> user_repo_fun) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
@@ -486,10 +601,7 @@ See experimental flipbookrXcloseread functionality used to reveal plot build lin
 </div>
 </div>
 </div>
-<div data-focus-on="cr-walkthrough-2">
-<p>let’s look at a count of all the exported functions first, using <code>aes(id = "All exported functions")</code></p>
-</div>
-<div id="cr-walkthrough-2">
+<div id="cr-walkthrough-2" class="sticky">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">last_plot</span>() <span class="sc">+</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">id =</span> <span class="st">"All exported functions"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -502,10 +614,7 @@ See experimental flipbookrXcloseread functionality used to reveal plot build lin
 </div>
 </div>
 </div>
-<div data-focus-on="cr-walkthrough-3">
-<p>Using circlepacking, we automatically have circles size representing the number of observation, i.e.&nbsp;exported functions, using <code>ggcirclepack::geom_circlepack()</code></p>
-</div>
-<div id="cr-walkthrough-3">
+<div id="cr-walkthrough-3" class="sticky">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">last_plot</span>() <span class="sc">+</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    ggcirclepack<span class="sc">::</span><span class="fu">geom_circlepack</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -518,10 +627,7 @@ See experimental flipbookrXcloseread functionality used to reveal plot build lin
 </div>
 </div>
 </div>
-<div data-focus-on="cr-walkthrough-4">
-<p>Of course this is hard to interpret without some kind of label. We use geom_circplepack_text to do this for us, using <code>ggcirclepack::geom_circlepack_text()</code></p>
-</div>
-<div id="cr-walkthrough-4">
+<div id="cr-walkthrough-4" class="sticky">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">last_plot</span>() <span class="sc">+</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    ggcirclepack<span class="sc">::</span><span class="fu">geom_circlepack_text</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -534,10 +640,7 @@ See experimental flipbookrXcloseread functionality used to reveal plot build lin
 </div>
 </div>
 </div>
-<div data-focus-on="cr-walkthrough-5">
-<p>and lets square up the circles, using <code>coord_equal()</code></p>
-</div>
-<div id="cr-walkthrough-5">
+<div id="cr-walkthrough-5" class="sticky">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">last_plot</span>() <span class="sc">+</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_equal</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -550,10 +653,7 @@ See experimental flipbookrXcloseread functionality used to reveal plot build lin
 </div>
 </div>
 </div>
-<div data-focus-on="cr-walkthrough-6">
-<p>we’ll add a theme, using <code>ggchalkboard:::theme_glassboard()</code></p>
-</div>
-<div id="cr-walkthrough-6">
+<div id="cr-walkthrough-6" class="sticky">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">last_plot</span>() <span class="sc">+</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    ggchalkboard<span class="sc">:::</span><span class="fu">theme_glassboard</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -566,10 +666,7 @@ See experimental flipbookrXcloseread functionality used to reveal plot build lin
 </div>
 </div>
 </div>
-<div data-focus-on="cr-walkthrough-7">
-<p>And remove axes… , using <code>theme(axis.line = element_blank(), axis.text = element_blank(), axis.ticks = element_blank())</code></p>
-</div>
-<div id="cr-walkthrough-7">
+<div id="cr-walkthrough-7" class="sticky">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">last_plot</span>() <span class="sc">+</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">axis.line =</span> <span class="fu">element_blank</span>(), <span class="at">axis.text =</span> <span class="fu">element_blank</span>(), <span class="at">axis.ticks =</span> <span class="fu">element_blank</span>()) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -582,10 +679,7 @@ See experimental flipbookrXcloseread functionality used to reveal plot build lin
 </div>
 </div>
 </div>
-<div data-focus-on="cr-walkthrough-8">
-<p>First we ask what packages - github repository names - are present, using <code>aes(id = repo)</code></p>
-</div>
-<div id="cr-walkthrough-8">
+<div id="cr-walkthrough-8" class="sticky">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">last_plot</span>() <span class="sc">+</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">id =</span> repo) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -598,10 +692,7 @@ See experimental flipbookrXcloseread functionality used to reveal plot build lin
 </div>
 </div>
 </div>
-<div data-focus-on="cr-walkthrough-9">
-<p>Then let’s look at who is writing these exported functions, using <code>aes(id = user)</code></p>
-</div>
-<div id="cr-walkthrough-9">
+<div id="cr-walkthrough-9" class="sticky">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">last_plot</span>() <span class="sc">+</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">id =</span> user) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -614,10 +705,7 @@ See experimental flipbookrXcloseread functionality used to reveal plot build lin
 </div>
 </div>
 </div>
-<div data-focus-on="cr-walkthrough-10">
-<p>an extender’s an extender no matter how small, using <code>data_nest(.by = user)</code></p>
-</div>
-<div id="cr-walkthrough-10">
+<div id="cr-walkthrough-10" class="sticky">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">last_plot</span>() <span class="sc">+</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data_nest</span>(<span class="at">.by =</span> user) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -630,10 +718,7 @@ See experimental flipbookrXcloseread functionality used to reveal plot build lin
 </div>
 </div>
 </div>
-<div data-focus-on="cr-walkthrough-11">
-<p>shrink sizes, using <code>scale_size(range = 1.75)</code></p>
-</div>
-<div id="cr-walkthrough-11">
+<div id="cr-walkthrough-11" class="sticky">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">last_plot</span>() <span class="sc">+</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fl">1.75</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -646,10 +731,7 @@ See experimental flipbookrXcloseread functionality used to reveal plot build lin
 </div>
 </div>
 </div>
-<div data-focus-on="cr-walkthrough-12">
-<p>extender by number of repos, using <code>data_unnest() + data_nest(.by = c(user, repo))</code></p>
-</div>
-<div id="cr-walkthrough-12">
+<div id="cr-walkthrough-12" class="sticky">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">last_plot</span>() <span class="sc">+</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data_unnest</span>() <span class="sc">+</span> <span class="fu">data_nest</span>(<span class="at">.by =</span> <span class="fu">c</span>(user, repo)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -662,10 +744,7 @@ See experimental flipbookrXcloseread functionality used to reveal plot build lin
 </div>
 </div>
 </div>
-<div data-focus-on="cr-walkthrough-13">
-<p>back to default size scales, using <code>scale_size()</code></p>
-</div>
-<div id="cr-walkthrough-13">
+<div id="cr-walkthrough-13" class="sticky">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">last_plot</span>() <span class="sc">+</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_size</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -678,10 +757,7 @@ See experimental flipbookrXcloseread functionality used to reveal plot build lin
 </div>
 </div>
 </div>
-<div data-focus-on="cr-walkthrough-14">
-<p>back to record per extender (user), using <code>data_unnest()</code></p>
-</div>
-<div id="cr-walkthrough-14">
+<div id="cr-walkthrough-14" class="sticky">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">last_plot</span>() <span class="sc">+</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data_unnest</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -694,10 +770,7 @@ See experimental flipbookrXcloseread functionality used to reveal plot build lin
 </div>
 </div>
 </div>
-<div data-focus-on="cr-walkthrough-15">
-<p>And we can look at what types of functions are exported, by looking at prefixes, using <code>aes(id = prefix_short)</code></p>
-</div>
-<div id="cr-walkthrough-15">
+<div id="cr-walkthrough-15" class="sticky">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">last_plot</span>() <span class="sc">+</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">id =</span> prefix_short) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -710,10 +783,7 @@ See experimental flipbookrXcloseread functionality used to reveal plot build lin
 </div>
 </div>
 </div>
-<div data-focus-on="cr-walkthrough-16">
-<p>Disaggregating a little, to longer prefixes like scale_color, we get a more granular look at exported function types, using <code>aes(id = prefix_long)</code></p>
-</div>
-<div id="cr-walkthrough-16">
+<div id="cr-walkthrough-16" class="sticky">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">last_plot</span>() <span class="sc">+</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">id =</span> prefix_long) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -726,10 +796,7 @@ See experimental flipbookrXcloseread functionality used to reveal plot build lin
 </div>
 </div>
 </div>
-<div data-focus-on="cr-walkthrough-17">
-<p>and we filter more popular prefixes, using <code>data_filter(n() &gt; 60 &amp; !is.na(prefix_long), .by = prefix_long)</code></p>
-</div>
-<div id="cr-walkthrough-17">
+<div id="cr-walkthrough-17" class="sticky">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">last_plot</span>() <span class="sc">+</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data_filter</span>(<span class="fu">n</span>() <span class="sc">&gt;</span> <span class="dv">60</span> <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(prefix_long), <span class="at">.by =</span> prefix_long) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -742,10 +809,7 @@ See experimental flipbookrXcloseread functionality used to reveal plot build lin
 </div>
 </div>
 </div>
-<div data-focus-on="cr-walkthrough-18">
-<p>and break up our plot space by these prefixes, using <code>facet_wrap(~prefix_short)</code></p>
-</div>
-<div id="cr-walkthrough-18">
+<div id="cr-walkthrough-18" class="sticky">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">last_plot</span>() <span class="sc">+</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>prefix_short) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -758,10 +822,7 @@ See experimental flipbookrXcloseread functionality used to reveal plot build lin
 </div>
 </div>
 </div>
-<div data-focus-on="cr-walkthrough-19">
-<p>gf and add_ aren’t really in-grammar prefixes, using <code>data_filter(!(prefix_short %in% c("gf_","add_")))</code></p>
-</div>
-<div id="cr-walkthrough-19">
+<div id="cr-walkthrough-19" class="sticky">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">last_plot</span>() <span class="sc">+</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data_filter</span>(<span class="sc">!</span>(prefix_short <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"gf_"</span>,<span class="st">"add_"</span>))) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -774,10 +835,7 @@ See experimental flipbookrXcloseread functionality used to reveal plot build lin
 </div>
 </div>
 </div>
-<div data-focus-on="cr-walkthrough-20">
-<p>let’s look at top prefixes by user, using <code>aes(id = user)</code></p>
-</div>
-<div id="cr-walkthrough-20">
+<div id="cr-walkthrough-20" class="sticky">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">last_plot</span>() <span class="sc">+</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">id =</span> user) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -790,10 +848,7 @@ See experimental flipbookrXcloseread functionality used to reveal plot build lin
 </div>
 </div>
 </div>
-<div data-focus-on="cr-walkthrough-21">
-<p>and look at the prolific authors in each of these areas, using <code>data_filter(n() &gt;= 10, .by = c(user, prefix_short))</code></p>
-</div>
-<div id="cr-walkthrough-21">
+<div id="cr-walkthrough-21" class="sticky">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">last_plot</span>() <span class="sc">+</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data_filter</span>(<span class="fu">n</span>() <span class="sc">&gt;=</span> <span class="dv">10</span>, <span class="at">.by =</span> <span class="fu">c</span>(user, prefix_short)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -806,10 +861,7 @@ See experimental flipbookrXcloseread functionality used to reveal plot build lin
 </div>
 </div>
 </div>
-<div data-focus-on="cr-walkthrough-22">
-<p>and show them equally, using <code>data_nest(c(user, prefix_short)) + scale_size(range = 1.7)</code></p>
-</div>
-<div id="cr-walkthrough-22">
+<div id="cr-walkthrough-22" class="sticky">
 <div class="cell">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">last_plot</span>() <span class="sc">+</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data_nest</span>(<span class="fu">c</span>(user, prefix_short)) <span class="sc">+</span> <span class="fu">scale_size</span>(<span class="at">range =</span> <span class="fl">1.7</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -818,6 +870,8 @@ See experimental flipbookrXcloseread functionality used to reveal plot build lin
 <figure class="figure">
 <p><img src="ggprefixes_closeread_files/figure-html/walkthrough-22-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
+</div>
+</div>
 </div>
 </div>
 </div>
