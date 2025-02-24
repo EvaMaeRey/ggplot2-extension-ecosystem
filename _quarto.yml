@@ -1,0 +1,27 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Who are the ggplot2 extenders? And how to become one"
+  reader-mode: true
+  repo-url: https://github.com/EvaMaeRey/ggplot2-extension-ecosystem
+  repo-actions: [edit, issue]
+  navbar:
+    left:
+      - href: ggprefixes_closereads.qmd
+        text: First closeread
+
+    tools:
+      - icon: github
+        href: https://github.com/EvaMaeRey/ggplot2-extension-ecosystem
+  page-footer:
+    right: "Built with [Quarto](https://quarto.org/)"
+    left: "&copy; Copyright 2024, Gina Reynolds, Joyce Robbins"
+
+format:
+  html:
+    theme: theme.scss
+    toc: true
+
+editor: source
