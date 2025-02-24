@@ -26,6 +26,22 @@ gg_pkgs |>
 ```
 
 ```{r}
-read_csv("tools_cran_package_db_gg_packages.csv") |> head()
+read_csv("tools_cran_package_db_gg_packages.csv") |> 
+  pull(URL) %>% 
+  str_extract("github.com/.+?/") %>% 
+  str_remove("github.com/") %>% 
+  str_remove("/") %>% 
+  unique() ->
+user_from_repo
+
+read_csv("tools_cran_package_db_gg_packages.csv") |> 
+  pull(URL) %>% 
+  str_extract("https://.+github.io") %>% 
+  str_remove(".github.io") %>% 
+  str_remove("https://") %>% 
+  unique() ->
+user_from_io
+
+user_from_io %>% 
 
 ```

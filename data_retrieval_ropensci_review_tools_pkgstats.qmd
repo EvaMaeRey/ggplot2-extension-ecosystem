@@ -96,4 +96,15 @@ cran_20230905 %>%
               mutate(authorsR = authorsR %>% 
                        str_replace(" ", "\n")), by = "Package") %>% 
   select(Package, authorsR, URL, everything())
+
+
+cran_20230905 %>% 
+  filter(Package == "flipbookr") %>% 
+  as.matrix() %>% 
+  t() %>% 
+  data.frame()
+
+
+(cran_20230905$`Reverse depends`[cran_20230905$Package == "ggplot2"]) %>% str_split(pattern = ", ") %>% .[[1]]
+
 ```

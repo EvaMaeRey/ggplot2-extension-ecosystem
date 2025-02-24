@@ -212,6 +212,317 @@ Tidytuesday cleaning code if of interest
 #   BuildManual &lt;lgl&gt;, BuildResaveData &lt;chr&gt;, BuildVignettes &lt;chr&gt;,
 #   Built &lt;lgl&gt;, ByteCompile &lt;chr&gt;, `Classification/ACM` &lt;lgl&gt;, …</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>cran_20230905 <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Package <span class="sc">==</span> <span class="st">"flipbookr"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                                                                                                                                                                                                                                                                                                                                                                                    .
+Package                                                                                                                                                                                                                                                                                                                                                                     flipbookr
+Version                                                                                                                                                                                                                                                                                                                                                                         0.1.0
+Priority                                                                                                                                                                                                                                                                                                                                                                         &lt;NA&gt;
+Depends                                                                                                                                                                                                                                                                                                                                                                          &lt;NA&gt;
+Imports                                                                                                                                                                                                                                                                                              dplyr, magrittr, tibble, stringr, tidyr, stringi, knitr, glue,\npurrr, rmarkdown
+LinkingTo                                                                                                                                                                                                                                                                                                                                                                        &lt;NA&gt;
+Suggests                                                                                                                                                                                                                                                                                                                                                                     testthat
+Enhances                                                                                                                                                                                                                                                                                                                                                                         &lt;NA&gt;
+License                                                                                                                                                                                                                                                                                                                                                            MIT + file LICENSE
+License_is_FOSS                                                                                                                                                                                                                                                                                                                                                                  &lt;NA&gt;
+License_restricts_use                                                                                                                                                                                                                                                                                                                                                            &lt;NA&gt;
+OS_type                                                                                                                                                                                                                                                                                                                                                                          &lt;NA&gt;
+Archs                                                                                                                                                                                                                                                                                                                                                                            &lt;NA&gt;
+MD5sum                                                                                                                                                                                                                                                                                                                                               e3f1e15bb057a916fc21856486868088
+NeedsCompilation                                                                                                                                                                                                                                                                                                                                                                   no
+Additional_repositories                                                                                                                                                                                                                                                                                                                                                          &lt;NA&gt;
+Author                                                                                                                                                                                                                                                                                                Evangeline Reynolds [cre, aut],\n  Garrick Aden-Buie [aut],\n  Emi Tanaka [aut]
+Authors@R               \n    c(person(given = "Evangeline",\n             family = "Reynolds",\n             role = c("cre", "aut"),\n             email = "evangeline.mae@gmail.com"),\n      person(given = "Garrick",\n             family = "Aden-Buie",\n             role = "aut"),\n      person(given = "Emi",\n             family = "Tanaka",\n             role = "aut"))
+Biarch                                                                                                                                                                                                                                                                                                                                                                           &lt;NA&gt;
+BugReports                                                                                                                                                                                                                                                                                                                                                                       &lt;NA&gt;
+BuildKeepEmpty                                                                                                                                                                                                                                                                                                                                                                   &lt;NA&gt;
+BuildManual                                                                                                                                                                                                                                                                                                                                                                      &lt;NA&gt;
+BuildResaveData                                                                                                                                                                                                                                                                                                                                                                  &lt;NA&gt;
+BuildVignettes                                                                                                                                                                                                                                                                                                                                                                   &lt;NA&gt;
+Built                                                                                                                                                                                                                                                                                                                                                                            &lt;NA&gt;
+ByteCompile                                                                                                                                                                                                                                                                                                                                                                      &lt;NA&gt;
+Classification/ACM                                                                                                                                                                                                                                                                                                                                                               &lt;NA&gt;
+Classification/ACM-2012                                                                                                                                                                                                                                                                                                                                                          &lt;NA&gt;
+Classification/JEL                                                                                                                                                                                                                                                                                                                                                               &lt;NA&gt;
+Classification/MSC                                                                                                                                                                                                                                                                                                                                                               &lt;NA&gt;
+Classification/MSC-2010                                                                                                                                                                                                                                                                                                                                                          &lt;NA&gt;
+Collate                                                                                                                                                                                                                                                                                                                                                                          &lt;NA&gt;
+Collate.unix                                                                                                                                                                                                                                                                                                                                                                     &lt;NA&gt;
+Collate.windows                                                                                                                                                                                                                                                                                                                                                                  &lt;NA&gt;
+Contact                                                                                                                                                                                                                                                                                                                                                                          &lt;NA&gt;
+Copyright                                                                                                                                                                                                                                                                                                                                                                        &lt;NA&gt;
+Date                                                                                                                                                                                                                                                                                                                                                                             &lt;NA&gt;
+Date/Publication                                                                                                                                                                                                                                                                                                                                              2021-05-31 11:40:06 UTC
+Description                                                                                                                                                  Flipbooks present code step-by-step and side-by-side with its output.  'flipbookr' helps creators build flipbooks efficiently because code pipelines are automatically parsed and prepped for presentation as flipbooks.
+Encoding                                                                                                                                                                                                                                                                                                                                                                        UTF-8
+KeepSource                                                                                                                                                                                                                                                                                                                                                                       &lt;NA&gt;
+Language                                                                                                                                                                                                                                                                                                                                                                         &lt;NA&gt;
+LazyData                                                                                                                                                                                                                                                                                                                                                                         &lt;NA&gt;
+LazyDataCompression                                                                                                                                                                                                                                                                                                                                                              &lt;NA&gt;
+LazyLoad                                                                                                                                                                                                                                                                                                                                                                         &lt;NA&gt;
+MailingList                                                                                                                                                                                                                                                                                                                                                                      &lt;NA&gt;
+Maintainer                                                                                                                                                                                                                                                                                                                             Evangeline Reynolds &lt;evangeline.mae@gmail.com&gt;
+Note                                                                                                                                                                                                                                                                                                                                                                             &lt;NA&gt;
+Packaged                                                                                                                                                                                                                                                                                                                                  2021-05-24 23:48:14 UTC; evangelinereynolds
+RdMacros                                                                                                                                                                                                                                                                                                                                                                         &lt;NA&gt;
+StagedInstall                                                                                                                                                                                                                                                                                                                                                                    &lt;NA&gt;
+SysDataCompression                                                                                                                                                                                                                                                                                                                                                               &lt;NA&gt;
+SystemRequirements                                                                                                                                                                                                                                                                                                                                                               &lt;NA&gt;
+Title                                                                                                                                                                                                                                                                                                                   Parses Code, Creates Partial Code Builds, Delivers Code Movie
+Type                                                                                                                                                                                                                                                                                                                                                                          Package
+URL                                                                                                                                                                                                                                                                                                                                                                              &lt;NA&gt;
+UseLTO                                                                                                                                                                                                                                                                                                                                                                           &lt;NA&gt;
+VignetteBuilder                                                                                                                                                                                                                                                                                                                                                                  &lt;NA&gt;
+ZipData                                                                                                                                                                                                                                                                                                                                                                          &lt;NA&gt;
+Path                                                                                                                                                                                                                                                                                                                                                                             &lt;NA&gt;
+X-CRAN-Comment                                                                                                                                                                                                                                                                                                                                                                   &lt;NA&gt;
+Published                                                                                                                                                                                                                                                                                                                                                                  2021-05-31
+Reverse depends                                                                                                                                                                                                                                                                                                                                                                  &lt;NA&gt;
+Reverse imports                                                                                                                                                                                                                                                                                                                                                                  &lt;NA&gt;
+Reverse linking to                                                                                                                                                                                                                                                                                                                                                               &lt;NA&gt;
+Reverse suggests                                                                                                                                                                                                                                                                                                                                                                 &lt;NA&gt;
+Reverse enhances                                                                                                                                                                                                                                                                                                                                                                 &lt;NA&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(cran_20230905<span class="sc">$</span><span class="st">`</span><span class="at">Reverse depends</span><span class="st">`</span>[cran_20230905<span class="sc">$</span>Package <span class="sc">==</span> <span class="st">"ggplot2"</span>]) <span class="sc">%&gt;%</span> <span class="fu">str_split</span>(<span class="at">pattern =</span> <span class="st">", "</span>) <span class="sc">%&gt;%</span> .[[<span class="dv">1</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1] "accessrmd"               "AFheritability"         
+  [3] "afmToolkit"              "alakazam"               
+  [5] "ale"                     "alookr"                 
+  [7] "AmpliconDuo"             "Anaconda"               
+  [9] "Anaquin"                 "AneuFinder"             
+ [11] "apisensr"                "applicable"             
+ [13] "ausplotsR"               "bacon"                  
+ [15] "BasketballAnalyzeR"      "bayesDP"                
+ [17] "BayesMortalityPlus"      "bayesnec"               
+ [19] "bde"                     "BDMMAcorrect"           
+ [21] "bhm"                     "biclustermd"            
+ [23] "bmscstan"                "bootnet"                
+ [25] "bpcp"                    "braidReports"           
+ [27] "bunching"                "CalibrationCurves"      
+ [29] "caret"                   "CellNOptR"              
+ [31] "centralplot"             "ceterisParibus"         
+ [33] "cfda"                    "CHETAH"                 
+ [35] "ChIPQC"                  "chromstaR"              
+ [37] "cjoint"                  "classifierplots"        
+ [39] "climwin"                 "clustEff"               
+ [41] "clustrd"                 "CNVrd2"                 
+ [43] "CNVScope"                "coefplot"               
+ [45] "cogena"                  "cohorttools"            
+ [47] "corkscrew"               "CoSMoS"                 
+ [49] "CRABS"                   "CrispRVariants"         
+ [51] "crmPack"                 "Crossover"              
+ [53] "CRTgeeDR"                "cummeRbund"             
+ [55] "curatedBreastData"       "cystiSim"               
+ [57] "cytofan"                 "dae"                    
+ [59] "DaMiRseq"                "dampack"                
+ [61] "DanielBiostatistics10th" "dartR"                  
+ [63] "dartR.base"              "decompTumor2Sig"        
+ [65] "DeconRNASeq"             "Deducer"                
+ [67] "deltaGseg"               "DendroSync"             
+ [69] "DepthProc"               "DEqMS"                  
+ [71] "DHBins"                  "diathor"                
+ [73] "diffEnrich"              "diffeR"                 
+ [75] "dittoSeq"                "DoseFinding"            
+ [77] "dotwhisker"              "dowser"                 
+ [79] "dslice"                  "dtwSat"                 
+ [81] "dvqcc"                   "dynr"                   
+ [83] "Eagle"                   "earlywarnings"          
+ [85] "echoice2"                "eeptools"               
+ [87] "egg"                     "EnhancedVolcano"        
+ [89] "EnsCat"                  "EpiCurve"               
+ [91] "episensr"                "erccdashboard"          
+ [93] "escheR"                  "EventStudy"             
+ [95] "extraChIPs"              "FactoClass"             
+ [97] "factoextra"              "Factoshiny"             
+ [99] "fbroc"                   "FisherEM"               
+[101] "flippant"                "forestmodel"            
+[103] "freqparcoord"            "frequency"              
+[105] "func2vis"                "funLBM"                 
+[107] "gamblers.ruin.gameplay"  "gapfill"                
+[109] "gapmap"                  "garma"                  
+[111] "GARS"                    "gcerisk"                
+[113] "gde"                     "GENEAsphere"            
+[115] "geneHapR"                "GenericML"              
+[117] "genlogis"                "GenomicOZone"           
+[119] "geomtextpath"            "GerminaR"               
+[121] "gespeR"                  "ggallin"                
+[123] "ggalluvial"              "GGally"                 
+[125] "ggalt"                   "gganimate"              
+[127] "ggbeeswarm"              "ggbio"                  
+[129] "ggbuildr"                "ggcharts"               
+[131] "ggcorrplot"              "ggcyto"                 
+[133] "ggdemetra"               "ggdensity"              
+[135] "ggedit"                  "ggESDA"                 
+[137] "ggetho"                  "ggFishPlots"            
+[139] "ggfocus"                 "ggforce"                
+[141] "ggformula"               "ggfortify"              
+[143] "ggghost"                 "gggibbous"              
+[145] "gggrid"                  "ggh4x"                  
+[147] "gghalves"                "ggheatmap"              
+[149] "gghighlight"             "ggHoriPlot"             
+[151] "ggimage"                 "gginnards"              
+[153] "ggip"                    "gglm"                   
+[155] "gglorenz"                "ggmanh"                 
+[157] "ggmap"                   "ggmatplot"              
+[159] "ggmcmc"                  "ggmosaic"               
+[161] "ggmulti"                 "ggnetwork"              
+[163] "ggOceanMaps"             "ggordiplots"            
+[165] "ggpackets"               "ggparallel"             
+[167] "ggparty"                 "ggplot2.utils"          
+[169] "ggpointless"             "ggpol"                  
+[171] "ggpolar"                 "ggpolypath"             
+[173] "ggpp"                    "ggpubr"                 
+[175] "ggragged"                "ggrain"                 
+[177] "ggraph"                  "ggraptR"                
+[179] "ggrepel"                 "ggseas"                 
+[181] "ggsector"                "ggside"                 
+[183] "ggsn"                    "ggspavis"               
+[185] "ggspectra"               "ggsurvey"               
+[187] "ggswissmaps"             "ggtern"                 
+[189] "ggTimeSeries"            "ggvenn"                 
+[191] "ggvoronoi"               "ggwordcloud"            
+[193] "GlarmaVarSel"            "glmm.hp"                
+[195] "glow"                    "GOplot"                 
+[197] "gpmap"                   "grafify"                
+[199] "GRENITS"                 "GSCA"                   
+[201] "gstar"                   "Guitar"                 
+[203] "h5vc"                    "HCmodelSets"            
+[205] "HEDA"                    "HelpersMG"              
+[207] "HiLDA"                   "hmmTMB"                 
+[209] "HRM"                     "huito"                  
+[211] "hyperSpec"               "iarm"                   
+[213] "iBMQ"                    "iCARH"                  
+[215] "iCellR"                  "ICSsmoothing"           
+[217] "ICtest"                  "idm"                    
+[219] "ifaTools"                "IMAS"                   
+[221] "immunarch"               "infinitefactor"         
+[223] "InSilicoVA"              "interca"                
+[225] "interplot"               "inti"                   
+[227] "intSDM"                  "invacost"               
+[229] "ioanalysis"              "iotarelr"               
+[231] "IPDfromKM"               "IsoformSwitchAnalyzeR"  
+[233] "itemanalysis"            "itraxR"                 
+[235] "IVAS"                    "kayadata"               
+[237] "LabApplStat"             "LambertW"               
+[239] "lavaSearch2"             "lcc"                    
+[241] "likert"                  "LinkHD"                 
+[243] "LinTInd"                 "llbayesireg"            
+[245] "lmap"                    "localgauss"             
+[247] "logihist"                "longRPart2"             
+[249] "loon.ggplot"             "lsbclust"               
+[251] "malariaAtlas"            "maser"                  
+[253] "mccf1"                   "MCMC.OTU"               
+[255] "MCMC.qpcr"               "mcprofile"              
+[257] "metacart"                "metaforest"             
+[259] "metapone"                "methimpute"             
+[261] "methylumi"               "mgcViz"                 
+[263] "mhtboot"                 "miaViz"                 
+[265] "microbiome"              "MicroNiche"             
+[267] "MIMOSA"                  "MinEDfind"              
+[269] "MineICA"                 "mirTarRnaSeq"           
+[271] "missRows"                "MIXFIM"                 
+[273] "mixKernel"               "mixOmics"               
+[275] "MixOptim"                "MLSeq"                  
+[277] "mlxR"                    "monocle"                
+[279] "MortalityTables"         "motoRneuron"            
+[281] "mrfDepth"                "MultiGlarmaVarSel"      
+[283] "multilevelPSA"           "MultisiteMediation"     
+[285] "NanoMethViz"             "NanoStringNCTools"      
+[287] "NanoTube"                "NBLDA"                  
+[289] "NBtsVarSel"              "Nebulosa"               
+[291] "NetworkChange"           "ngsReports"             
+[293] "NIRStat"                 "nonmem2R"               
+[295] "oceanwaves"              "octad"                  
+[297] "omada"                   "OptimalRerandExpDesigns"
+[299] "optimos.prime"           "optrefine"              
+[301] "ordr"                    "orgR"                   
+[303] "overlapping"             "pafr"                   
+[305] "pagoo"                   "PairedData"             
+[307] "palmid"                  "pAnalysis"              
+[309] "PASenseWear"             "PAsso"                  
+[311] "PASWR2"                  "pathVar"                
+[313] "PCAtools"                "pequod"                 
+[315] "perry"                   "personalized"           
+[317] "perspectev"              "phase1PRMD"             
+[319] "phase1RMD"               "phenModel"              
+[321] "phenoTest"               "photosynthesis"         
+[323] "phyloseqGraphTest"       "Pi"                     
+[325] "pitchRx"                 "pkggraph"               
+[327] "plantecowrap"            "PlasmaMutationDetector" 
+[329] "PlasmaMutationDetector2" "plotBart"               
+[331] "plothelper"              "plotly"                 
+[333] "plotROC"                 "pointRes"               
+[335] "PPInfer"                 "PPtreeViz"              
+[337] "precintcon"              "predint"                
+[339] "primer"                  "PRISMA"                 
+[341] "ProbBayes"               "profileR"               
+[343] "promotionImpact"         "PSAboot"                
+[345] "PupillometryR"           "pvcurveanalysis"        
+[347] "pvldcurve"               "qqplotr"                
+[349] "qreport"                 "quadrupen"              
+[351] "QuantileGH"              "quickpsy"               
+[353] "r2spss"                  "rabhit"                 
+[355] "radiant.data"            "randomizeR"             
+[357] "RATest"                  "RatingScaleReduction"   
+[359] "RcmdrPlugin.KMggplot2"   "RCPA"                   
+[361] "rdacca.hp"               "recoup"                 
+[363] "reinsureR"               "remaCor"                
+[365] "Repliscope"              "rise"                   
+[367] "RItools"                 "RMOPI"                  
+[369] "RNAseqNet"               "RnaSeqSampleSize"       
+[371] "RnBeads"                 "Rnits"                  
+[373] "robCompositions"         "robmed"                 
+[375] "robustHD"                "RpeakChrom"             
+[377] "Rqc"                     "rrecsys"                
+[379] "RSA"                     "rSEA"                   
+[381] "RsSimulx"                "rstan"                  
+[383] "rtip"                    "RVCompare"              
+[385] "rwty"                    "SAMprior"               
+[387] "savR"                    "SC.MEB"                 
+[389] "scater"                  "scatterpie"             
+[391] "scDDboost"               "schex"                  
+[393] "scoper"                  "SCOUTer"                
+[395] "scRepertoire"            "SDLfilter"              
+[397] "sdStaf"                  "season"                 
+[399] "SEERaBomb"               "sensiPhy"               
+[401] "seqsetvis"               "SetMethods"             
+[403] "shazam"                  "shinymodels"            
+[405] "shinySIR"                "simaerep"               
+[407] "simfit"                  "simmer.plot"            
+[409] "simmr"                   "sitree"                 
+[411] "SmarterPoland"           "soc.ca"                 
+[413] "somspace"                "SparseBiplots"          
+[415] "SparseFactorAnalysis"    "sparsereg"              
+[417] "spqn"                    "ssaBSS"                 
+[419] "sSNAPPY"                 "ssviz"                  
+[421] "staRdom"                 "StatMatch"              
+[423] "statVisual"              "success"                
+[425] "sugrrants"               "SummarizedBenchmark"    
+[427] "survHE"                  "survminer"              
+[429] "swa"                     "SWMPr"                  
+[431] "tanggle"                 "TcGSA"                  
+[433] "tdr"                     "TeachHist"              
+[435] "TestGardener"            "texmex"                 
+[437] "texteffect"              "tigger"                 
+[439] "TissueEnrich"            "TPD"                    
+[441] "TreeDep"                 "TriMatch"               
+[443] "TripleR"                 "TrumpetPlots"           
+[445] "tspmeta"                 "twangRDC"               
+[447] "useful"                  "ushr"                   
+[449] "varian"                  "variancePartition"      
+[451] "vdg"                     "VectorCodeR"            
+[453] "VEwaning"                "VEwaningVariant"        
+[455] "visae"                   "VisualizeSimon2Stage"   
+[457] "VplotR"                  "vsd"                    
+[459] "waffle"                  "WebAnalytics"           
+[461] "weightr"                 "WRTDStidal"             
+[463] "xkcd"                    "Xplortext"              
+[465] "xpose"                   "YAPSA"                  </code></pre>
+</div>
 </div>
 
 </main>
