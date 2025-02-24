@@ -44,18 +44,18 @@ between audience members and the panelists.
 
 Here links to html rendered files:
 
-1.  [ggprefixes_closeread.html](https://evamaerey.github.io/ggplot2-extension-ecosystem/ggprefixes_closeread.html)
-    **[source](https://github.com/evamaerey/ggplot2-extension-ecosystem/blob/master/ggprefixes_closeread.qmd)**
-2.  [ggedgelist-gg-cran-extenders.html](https://evamaerey.github.io/ggplot2-extension-ecosystem/ggedgelist-gg-cran-extenders.html)
-    **[source](https://github.com/evamaerey/ggplot2-extension-ecosystem/blob/master/ggedgelist-gg-cran-extenders.qmd)**
-3.  [data_retrieval_tools_cran_packages_db.html](https://evamaerey.github.io/ggplot2-extension-ecosystem/data_retrieval_tools_cran_packages_db.html)
-    **[source](https://github.com/evamaerey/ggplot2-extension-ecosystem/blob/master/data_retrieval_tools_cran_packages_db.qmd)**
-4.  [data_retrieval_ropensci_review_tools_pkgstats.html](https://evamaerey.github.io/ggplot2-extension-ecosystem/data_retrieval_ropensci_review_tools_pkgstats.html)
-    **[source](https://github.com/evamaerey/ggplot2-extension-ecosystem/blob/master/data_retrieval_ropensci_review_tools_pkgstats.qmd)**
-5.  [data_retrieval_gallery_config.html](https://evamaerey.github.io/ggplot2-extension-ecosystem/data_retrieval_gallery_config.html)
-    **[source](https://github.com/evamaerey/ggplot2-extension-ecosystem/blob/master/data_retrieval_gallery_config.qmd)**
+1.  [docs/ggprefixes_closeread.html](https://evamaerey.github.io/ggplot2-extension-ecosystem/docs/ggprefixes_closeread.html)
+    **[source](https://github.com/evamaerey/ggplot2-extension-ecosystem/blob/master/docs/ggprefixes_closeread.qmd)**
+2.  [docs/ggedgelist-gg-cran-extenders.html](https://evamaerey.github.io/ggplot2-extension-ecosystem/docs/ggedgelist-gg-cran-extenders.html)
+    **[source](https://github.com/evamaerey/ggplot2-extension-ecosystem/blob/master/docs/ggedgelist-gg-cran-extenders.qmd)**
+3.  [docs/data_retrieval_tools_cran_packages_db.html](https://evamaerey.github.io/ggplot2-extension-ecosystem/docs/data_retrieval_tools_cran_packages_db.html)
+    **[source](https://github.com/evamaerey/ggplot2-extension-ecosystem/blob/master/docs/data_retrieval_tools_cran_packages_db.qmd)**
+4.  [docs/data_retrieval_ropensci_review_tools_pkgstats.html](https://evamaerey.github.io/ggplot2-extension-ecosystem/docs/data_retrieval_ropensci_review_tools_pkgstats.html)
+    **[source](https://github.com/evamaerey/ggplot2-extension-ecosystem/blob/master/docs/data_retrieval_ropensci_review_tools_pkgstats.qmd)**
+5.  [docs/data_retrieval_gallery_config.html](https://evamaerey.github.io/ggplot2-extension-ecosystem/docs/data_retrieval_gallery_config.html)
+    **[source](https://github.com/evamaerey/ggplot2-extension-ecosystem/blob/master/docs/data_retrieval_gallery_config.qmd)**
 
 And to tabular data…
 
-1.  [tools_cran_package_db_gg_packages.csv](https://github.com/EvaMaeRey/ggplot2-extension-ecosystem/blob/main/tools_cran_package_db_gg_packages.csv)
-2.  [gallery_config.csv](https://github.com/EvaMaeRey/ggplot2-extension-ecosystem/blob/main/gallery_config.csv)
+1.  [docs/tools_cran_package_db_gg_packages.csv](https://github.com/EvaMaeRey/ggplot2-extension-ecosystem/blob/main/docs/tools_cran_package_db_gg_packages.csv)
+2.  [docs/gallery_config.csv](https://github.com/EvaMaeRey/ggplot2-extension-ecosystem/blob/main/docs/gallery_config.csv)
