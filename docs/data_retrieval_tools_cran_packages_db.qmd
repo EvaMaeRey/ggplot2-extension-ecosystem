@@ -16,14 +16,35 @@ library(tidyverse)
 
 pkgs <- as_tibble(tools::CRAN_package_db())
 gg_pkgs <- pkgs %>% 
-  filter(
-    str_detect(Package, "^gg|^GG|gg$|GG$"),
-    if_any(-Package, ~ str_detect(.x, "ggplot2")) # among all packages except ggplot2
-  )
+  mutate(
+    ind_ggplot_depend_import_suggest = if_any(-Package, ~ str_detect(.x, "ggplot2")),
+    ind_gg = str_detect(Package, "gg|GG"),
+    ind_ggplot_in_description = str_detect(Description, "ggplot"),
+    ind_extension_in_description = str_detect(Description, "exten") 
+         ) %>%
+  filter(ind_ggplot_depend_import_suggest, 
+         ind_gg | ind_ggplot_in_description) %>% 
+  mutate(ext_score = ind_gg + ind_ggplot_in_description + ind_extension_in_description)
+                                      
 
+  
 gg_pkgs |>
   write_csv("tools_cran_package_db_gg_packages.csv")
 ```
+
+```{r, results='asis', message=F, warning=F}
+read_csv("tools_cran_package_db_gg_packages.csv") %>% 
+  arrange(-ext_score) %>% 
+  mutate(pd = paste0(row_number(), ". ", Package,"; Description: ", 
+                     Description, "  **Probable Extension Score: ", 
+                     ext_score, "**")) %>%
+  pull(pd) %>% 
+  paste(collapse = "\n\n\n") %>% 
+  cat()
+  
+
+```
+
 
 ```{r}
 read_csv("tools_cran_package_db_gg_packages.csv") |> 
