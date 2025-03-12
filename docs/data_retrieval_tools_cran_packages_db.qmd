@@ -42,6 +42,6 @@ read_csv("tools_cran_package_db_gg_packages.csv") |>
   unique() ->
 user_from_io
 
-user_from_io %>% 
+user_from_io 
 
 ```
